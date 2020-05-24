@@ -7,8 +7,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
-ATimeChildCharacter::ATimeChildCharacter() :
-	Health(3.f)
+ATimeChildCharacter::ATimeChildCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -75,27 +74,4 @@ void ATimeChildCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, cons
 void ATimeChildCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	StopJumping();
-}
-
-void ATimeChildCharacter::HandleDeath()
-{
-	//TODO Play death animation
-	UE_LOG(LogTemp, Warning, TEXT("You have died."));
-}
-
-void ATimeChildCharacter::TakeHit()
-{
-	(this->Health - 1.f) <= 0.f ? HandleDeath() : this->Health--;
-
-	UE_LOG(LogTemp, Warning, TEXT("You have been hit."));
-}
-
-float ATimeChildCharacter::GetHealth()
-{
-	return this->Health;
-}
-
-void ATimeChildCharacter::SetHealth(float newHealth)
-{
-	this->Health = newHealth;
 }

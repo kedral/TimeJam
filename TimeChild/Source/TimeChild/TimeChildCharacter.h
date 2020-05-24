@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+
 #include "TimeChildCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -19,9 +20,7 @@ class ATimeChildCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
-	// Character's health
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Gameplay, meta = (AllowPrivateAccess = "true"))
-	float Health;
+
 
 protected:
 
@@ -37,18 +36,6 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
-
-	UFUNCTION(BlueprintCallable, Category = Gameplay)
-	virtual void TakeHit();
-
-	UFUNCTION(BlueprintCallable, Category = Gameplay)
-	virtual void HandleDeath();
-
-	UFUNCTION(BlueprintCallable, Category = Gameplay)
-	virtual float GetHealth();
-
-	UFUNCTION(BlueprintCallable, Category = Gameplay)
-	virtual void SetHealth(float newHealth);
 
 public:
 	ATimeChildCharacter();
